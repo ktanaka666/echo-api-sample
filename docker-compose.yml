@@ -20,13 +20,11 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./docker/mysql/data/:/docker-entrypoint-initdb.d/
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
       TZ: "Asia/Tokyo"
   
   cache:
